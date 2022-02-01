@@ -6,7 +6,7 @@
 /*   By: spoolpra <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 01:43:57 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/02/01 04:20:38 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/02/01 15:34:07 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #include "str_utility.h"
 #include "file_utility.h"
 #include <stdlib.h>
+#include <stdio.h>
+
+int	ft_neighbor_check(t_index *index, int row, int col, int self);
 
 int	check_char(char *alpha, char c)
 {
@@ -24,6 +27,7 @@ int	check_char(char *alpha, char c)
 	{
 		if (alpha[i] == c)
 			return (i ^ 1);
+		i++;
 	}
 	return (-1);
 }
@@ -33,6 +37,17 @@ void	assign_max(int *max, int row, int col, int size)
 	max[0] = size;
 	max[1] = row;
 	max[2] = col;
+}
+
+int	valid_column(t_info *info, int col)
+{
+	if (info->col == 0)
+	{
+		info->col = col;
+	}
+	if (col == 0 || col != info->col)
+		return (0);
+	return (1);
 }
 
 int	valid_linked_list(t_info *info, t_index *index, int row, int *max)
@@ -52,11 +67,15 @@ int	valid_linked_list(t_info *info, t_index *index, int row, int *max)
 		tmp = check_char(info->alpha, buffer[0]);
 		if (tmp < 0)
 			return (0);
-		tmp = neighbor_check(index, row, col, tmp);
-		if (tmp > *max)
+		tmp = ft_neighbor_check(index, row, col, tmp);
+		if (tmp > *max && tmp > 0)
 			assign_max(max, row, col, tmp);
 		ft_list_push_back(&index[row], tmp, buffer[0]);
 		col++;
+	}
+	if (!valid_column(info, col))
+	{
+		return (0);
 	}
 	return (1);
 }
@@ -67,9 +86,7 @@ int	valid_each_line(t_info *info, int n_row, t_index *index, int **max)
 	int	j;
 
 	*max = (int *)malloc(sizeof(int) * 3);
-	(*max)[0] = -1;
-	(*max)[1] = -1;
-	(*max)[2] = -1;
+	assign_max(*max, -1, -1, -1);
 	i = 0;
 	while (i < n_row)
 	{
@@ -79,10 +96,13 @@ int	valid_each_line(t_info *info, int n_row, t_index *index, int **max)
 			while (j <= i)
 			{
 				ft_free_list(&index[j]);
+				j++;
 			}
 			free(*max);
 			return (0);
 		}
+		ft_print_list(&index[i]);
+		ft_putchar('\n');
 		i++;
 	}
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: spoolpra <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 00:20:17 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/02/01 01:34:15 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/02/01 14:49:57 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_putnbr(int nbr)
 {
 	int	tmp;
 
-	if (nbr > 0)
+	if (nbr > 9)
 		ft_putnbr(nbr / 10);
 	tmp = nbr % 10;
 	ft_putchar(tmp + '0');

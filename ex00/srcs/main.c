@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: spoolpra <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/31 23:49:18 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/01/31 23:51:33 by spoolpra         ###   ########.fr       */
+/*   Created: 2022/02/01 15:52:36 by spoolpra          #+#    #+#             */
+/*   Updated: 2022/02/01 15:55:38 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,5 @@ int	main(int argc, char **argv)
 	(void)argc;
 	if (!valid_file(argv[1]))
 		return (0);
+	return (1);
 }

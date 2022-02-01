@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file_utility.h                                     :+:      :+:    :+:   */
+/*   ft_list_utility_2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spoolpra <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/31 23:34:44 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/02/01 15:13:19 by spoolpra         ###   ########.fr       */
+/*   Created: 2022/02/01 14:51:12 by spoolpra          #+#    #+#             */
+/*   Updated: 2022/02/01 15:46:19 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILE_UTILITY_H
-# define FILE_UTILITY_H
-# include <unistd.h>
-# include <fcntl.h>
+#include "list.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-int		valid_char(int i, char *inf, char c);
-int		extract_row(char *line, int size);
-int		valid_info(int index, char *line, t_info *info);
-int		valid_each_line(t_info *info, int row, t_index *index_key, int **max);
-int		valid_first_line(t_info *info, int *n_row);
-char	*ft_read_line(int fd);
+void	free_index(t_index *index_key)
+{
+	t_index	*buffer;
 
-#endif
+	buffer = index_key;
+	while (index_key != 0)
+	{
+		ft_free_list(index_key);
+		index_key++;
+	}
+	free(buffer);
+}
