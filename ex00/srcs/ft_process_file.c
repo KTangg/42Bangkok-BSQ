@@ -6,7 +6,7 @@
 /*   By: spoolpra <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 20:31:29 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/02/01 15:52:22 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/02/01 16:17:58 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	extract_file(t_info *info, t_index **index_key, int **max)
 {
 	int		n_row;
 
+	n_row = 0;
 	if (!valid_first_line(info, &n_row))
 		return (0);
 	ft_putstr(info->alpha);
@@ -38,6 +39,8 @@ void	process_file(t_info *info)
 	int	*max;
 	t_index	*index_key;
 
+	max = NULL;
+	index_key = NULL;
 	if (!extract_file(info, &index_key, &max))
 	{
 		free(info->alpha);
