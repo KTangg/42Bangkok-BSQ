@@ -6,7 +6,7 @@
 /*   By: spoolpra <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 20:31:29 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/02/01 19:08:35 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/02/01 19:16:29 by ssukwatt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	process_file(t_info *info)
 	write_down(info->alpha, index_key, max);
 	free(max);
 	free(info->alpha);
-	free_index(index_key);
+	free(index_key);
 	return (1);
 }
 
