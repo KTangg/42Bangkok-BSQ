@@ -6,7 +6,7 @@
 /*   By: spoolpra <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 20:31:29 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/02/01 16:59:27 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/02/01 18:20:41 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ int	extract_file(t_info *info, t_index **index_key, int **max)
 	i = 0;
 	if (!valid_first_line(info, &n_row))
 		return (0);
-	ft_putstr(info->alpha);
-	ft_putstr("\n");
 	*index_key = (t_index *)malloc(sizeof(t_index) * (n_row + 1));
 	while (i <= n_row)
 	{
@@ -52,7 +50,7 @@ int	process_file(t_info *info)
 		free(info->alpha);
 		return (0);
 	}
-	//write_down(fd, index_key);
+	write_down(info->alpha, index_key, max);
 	free(max);
 	free(info->alpha);
 	free_index(index_key);

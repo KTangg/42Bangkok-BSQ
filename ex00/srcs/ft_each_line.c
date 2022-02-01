@@ -6,7 +6,7 @@
 /*   By: spoolpra <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 01:43:57 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/02/01 16:56:37 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/02/01 18:14:36 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "str_utility.h"
 #include "file_utility.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 int	ft_neighbor_check(t_index *index, int row, int col, int self);
 
@@ -99,8 +98,6 @@ int	valid_each_line(t_info *info, int n_row, t_index *index, int **max)
 			free(*max);
 			return (0);
 		}
-		ft_print_list(&index[i]);
-		ft_putchar('\n');
 		i++;
 	}
 	return (1);
