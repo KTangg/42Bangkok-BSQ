@@ -6,7 +6,7 @@
 /*   By: spoolpra <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 12:01:10 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/02/01 13:51:40 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/02/01 17:00:30 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	ft_getupper(int *upper, t_index index, int col)
 {
-	int	i;
+	int		i;
 	t_list	*tmp;
 
 	tmp = index.begin;

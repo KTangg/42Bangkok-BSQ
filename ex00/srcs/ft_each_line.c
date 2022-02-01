@@ -6,7 +6,7 @@
 /*   By: spoolpra <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 01:43:57 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/02/01 16:28:05 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/02/01 16:56:37 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,7 @@ int	valid_linked_list(t_info *info, t_index *index, int row, int *max)
 		col++;
 	}
 	if (!valid_column(info, col))
-	{
 		return (0);
-	}
 	return (1);
 }
 

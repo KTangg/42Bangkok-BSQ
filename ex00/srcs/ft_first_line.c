@@ -6,7 +6,7 @@
 /*   By: spoolpra <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 21:48:32 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/02/01 15:31:11 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/02/01 16:56:01 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ int	valid_inf(int index, char *line, t_info *info)
 			(info->alpha)[i] = line[index + i];
 		else
 		{
-			free(info->alpha);
 			free(line);
 			return (0);
 		}
@@ -108,10 +107,16 @@ int	valid_first_line(t_info *info, int *n_row)
 	line = ft_read_line(info->fd);
 	size = ft_strlen(line);
 	if (size < 4)
+	{
+		free(line);
 		return (0);
+	}
 	*n_row = extract_row(line, (size - 3));
 	if (*n_row <= 0)
+	{
+		free(line);
 		return (0);
+	}
 	if (!valid_inf(size - 3, line, info))
 	{
 		return (0);

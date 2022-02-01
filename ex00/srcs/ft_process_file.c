@@ -6,7 +6,7 @@
 /*   By: spoolpra <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 20:31:29 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/02/01 16:38:41 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/02/01 16:59:27 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ int	extract_file(t_info *info, t_index **index_key, int **max)
 		free(*index_key);
 		return (0);
 	}
-	return(1);
+	return (1);
 }
 
-void	process_file(t_info *info)
+int	process_file(t_info *info)
 {
-	int	*max;
+	int		*max;
 	t_index	*index_key;
 
 	max = NULL;
@@ -50,12 +50,19 @@ void	process_file(t_info *info)
 	if (!extract_file(info, &index_key, &max))
 	{
 		free(info->alpha);
-		return ;
+		return (0);
 	}
 	//write_down(fd, index_key);
 	free(max);
 	free(info->alpha);
 	free_index(index_key);
+	return (1);
+}
+
+void	error_info(t_info *info)
+{
+	free(info);
+	ft_putstr(INVALID);
 }
 
 int	valid_file(char *file_path)
@@ -68,17 +75,19 @@ int	valid_file(char *file_path)
 	info->col = 0;
 	if (info->fd < 0)
 	{
-		ft_putstr(INVALID);
-		free(info);
+		error_info(info);
 		return (0);
 	}
-	process_file(info);
+	if (!process_file(info))
+	{
+		error_info(info);
+		return (0);
+	}
 	if (close(info->fd) < 0)
 	{
-		ft_putstr(INVALID);
-		free(info);
+		error_info(info);
 		return (0);
 	}
-	ft_putstr("Stop bloody seg fault\n");
+	free(info);
 	return (1);
 }
