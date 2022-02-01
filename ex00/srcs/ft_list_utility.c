@@ -6,7 +6,7 @@
 /*   By: spoolpra <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 19:15:28 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/02/01 14:51:02 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/02/01 16:11:17 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,15 @@ void	ft_free_list(t_index *index_key)
 	t_list	*tmp;
 	t_list	*current;
 
-	current = index_key->begin;
-	while (current != NULL)
+	if (index_key->begin != NULL)
 	{
-		tmp = current->next;
-		free(current);
-		current = tmp;
+		current = index_key->begin;
+		while (current != NULL)
+		{
+			tmp = current->next;
+			free(current);
+			current = tmp;
+		}
 	}
 }
 
