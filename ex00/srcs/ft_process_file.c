@@ -6,7 +6,7 @@
 /*   By: spoolpra <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 20:31:29 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/02/01 18:20:41 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/02/01 19:08:35 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,29 +63,29 @@ void	error_info(t_info *info)
 	ft_putstr(INVALID);
 }
 
-int	valid_file(char *file_path)
+void	valid_file(char *file_path)
 {
 	t_info	*info;	
 
 	info = (t_info *)malloc(sizeof(t_info) * 1);
-	info->fd = open(file_path, O_RDWR);
+	info->fd = open(file_path, O_RDONLY);
 	info->alpha = NULL;
 	info->col = 0;
 	if (info->fd < 0)
 	{
 		error_info(info);
-		return (0);
+		return ;
 	}
 	if (!process_file(info))
 	{
 		error_info(info);
-		return (0);
+		return ;
 	}
 	if (close(info->fd) < 0)
 	{
 		error_info(info);
-		return (0);
+		return ;
 	}
 	free(info);
-	return (1);
+	return ;
 }

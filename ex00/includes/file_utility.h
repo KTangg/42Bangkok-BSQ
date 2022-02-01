@@ -6,7 +6,7 @@
 /*   By: spoolpra <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 23:34:44 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/02/01 15:13:19 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/02/01 19:08:16 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ int		valid_info(int index, char *line, t_info *info);
 int		valid_each_line(t_info *info, int row, t_index *index_key, int **max);
 int		valid_first_line(t_info *info, int *n_row);
 char	*ft_read_line(int fd);
+void	write_down(char *info, t_index *index_key, int *max);
 
 #endif
