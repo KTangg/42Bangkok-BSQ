@@ -6,7 +6,7 @@
 /*   By: spoolpra <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 20:31:29 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/02/01 19:16:29 by ssukwatt         ###   ########.fr       */
+/*   Updated: 2022/02/01 23:27:05 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	process_file(t_info *info)
 void	error_info(t_info *info)
 {
 	free(info);
-	ft_putstr(INVALID);
+	ft_puterr(INVALID);
 }
 
 void	valid_file(char *file_path)

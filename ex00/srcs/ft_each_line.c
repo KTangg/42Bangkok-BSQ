@@ -6,7 +6,7 @@
 /*   By: spoolpra <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 01:43:57 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/02/01 18:14:36 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/02/01 20:47:45 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ int	valid_linked_list(t_info *info, t_index *index, int row, int *max)
 int	valid_each_line(t_info *info, int n_row, t_index *index, int **max)
 {
 	int	i;
-	int	j;
+	int	byte_read;
+	char	buffer[1];
 
 	*max = (int *)malloc(sizeof(int) * 3);
 	assign_max(*max, -1, -1, -1);
@@ -89,16 +90,16 @@ int	valid_each_line(t_info *info, int n_row, t_index *index, int **max)
 	{
 		if (!valid_linked_list(info, index, i, *max))
 		{
-			j = 0;
-			while (j <= i)
-			{
-				ft_free_list(&index[j]);
-				j++;
-			}
-			free(*max);
+			free_each_line(index, *max, i);
 			return (0);
 		}
 		i++;
+	}
+	byte_read = read(info->fd, buffer, 1);
+	if (byte_read > 0)
+	{
+		free_each_line(index, *max, 1);
+		return (0);
 	}
 	return (1);
 }
