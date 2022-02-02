@@ -6,7 +6,7 @@
 /*   By: spoolpra <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:52:36 by spoolpra          #+#    #+#             */
-/*   Updated: 2022/02/01 23:08:04 by spoolpra         ###   ########.fr       */
+/*   Updated: 2022/02/02 14:12:06 by spoolpra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "file_utility.h"
 #include <stdlib.h>
 
-int	valid_file(char *file_path);
+int		valid_file(char *file_path);
 void	error_info(t_info *info);
 
 void	valid_stdin(void)
